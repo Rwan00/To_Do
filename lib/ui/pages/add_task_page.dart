@@ -38,6 +38,8 @@ class _AddTaskPageState extends State<AddTaskPage> {
 
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: context.theme.colorScheme.background,
       appBar: appBar(context),
@@ -86,8 +88,8 @@ class _AddTaskPageState extends State<AddTaskPage> {
                       ),
                     ),
                   ),
-                  const SizedBox(
-                    width: 10,
+                  SizedBox(
+                    width: width*0.03,
                   ),
                   Expanded(
                     child: InputField(
@@ -114,11 +116,11 @@ class _AddTaskPageState extends State<AddTaskPage> {
                       borderRadius: BorderRadius.circular(10),
                       items: remindList
                           .map((value) => DropdownMenuItem(
-                              value: value,
-                              child: Text(
-                                "$value",
-                                style: const TextStyle(color: Colors.white),
-                              )))
+                          value: value,
+                          child: Text(
+                            "$value",
+                            style: const TextStyle(color: Colors.white),
+                          )))
                           .toList(),
                       style: subTitleStyle,
                       onChanged: (newValue) {
@@ -136,8 +138,8 @@ class _AddTaskPageState extends State<AddTaskPage> {
                         height: 0,
                       ),
                     ),
-                    const SizedBox(
-                      width: 10,
+                    SizedBox(
+                      width: width * 0.03,
                     )
                   ],
                 ),
@@ -153,11 +155,11 @@ class _AddTaskPageState extends State<AddTaskPage> {
                       items: repeatList
                           .map<DropdownMenuItem<String>>(
                               (value) => DropdownMenuItem(
-                                  value: value,
-                                  child: Text(
-                                    value,
-                                    style: const TextStyle(color: Colors.white),
-                                  )))
+                              value: value,
+                              child: Text(
+                                value,
+                                style: const TextStyle(color: Colors.white),
+                              )))
                           .toList(),
                       style: subTitleStyle,
                       onChanged: (String? newValue) {
@@ -175,14 +177,14 @@ class _AddTaskPageState extends State<AddTaskPage> {
                         height: 0,
                       ),
                     ),
-                    const SizedBox(
-                      width: 10,
+                    SizedBox(
+                      width: width * 0.03,
                     )
                   ],
                 ),
               ),
-              const SizedBox(
-                height: 10,
+              SizedBox(
+                height: height* 0.01,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -197,9 +199,9 @@ class _AddTaskPageState extends State<AddTaskPage> {
                   )
                 ],
               ),
-              const SizedBox(
+              /*const SizedBox(
                 height: 20,
-              )
+              )*/
             ],
           ),
         ),
@@ -210,6 +212,8 @@ class _AddTaskPageState extends State<AddTaskPage> {
 
 
   AppBar appBar(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
     return AppBar(
       centerTitle: true,
       backgroundColor: context.theme.colorScheme.background,
@@ -229,8 +233,8 @@ class _AddTaskPageState extends State<AddTaskPage> {
           backgroundImage: widget.bgImage ?? const AssetImage("images/img.png"),
           radius: 20,
         ),
-        const SizedBox(
-          width: 20,
+         SizedBox(
+          width: width*0.04,
         )
       ],
     );
@@ -243,20 +247,20 @@ class _AddTaskPageState extends State<AddTaskPage> {
       Get.back();
     }
     else if(_titleController.text.isNum || _noteController.text.isNum)
-      {
-        Get.snackbar("Warning", "Don't Enter A Numbers At Text Fields",
-            snackPosition: SnackPosition.BOTTOM,
-            backgroundColor: Get.isDarkMode ? darkHeaderClr : Colors.grey[200],
-            colorText: Colors.red,
-            icon: const Icon(
-              Icons.warning_amber_outlined,
-              color: Colors.yellow,
-            ),
-            forwardAnimationCurve: Curves.easeInToLinear,
-            reverseAnimationCurve: Curves.easeInSine,
-            padding: const EdgeInsets.all(10),
-            margin: const EdgeInsets.symmetric(vertical: 10));
-      }
+    {
+      Get.snackbar("Warning", "Don't Enter A Numbers At Text Fields",
+          snackPosition: SnackPosition.BOTTOM,
+          backgroundColor: Get.isDarkMode ? darkHeaderClr : Colors.grey[200],
+          colorText: Colors.red,
+          icon: const Icon(
+            Icons.warning_amber_outlined,
+            color: Colors.yellow,
+          ),
+          forwardAnimationCurve: Curves.easeInToLinear,
+          reverseAnimationCurve: Curves.easeInSine,
+          padding: const EdgeInsets.all(10),
+          margin: const EdgeInsets.symmetric(vertical: 10));
+    }
     else if (_titleController.text.isEmpty || _noteController.text.isEmpty) {
       Get.snackbar("required", "All Fields Are Required",
           snackPosition: SnackPosition.BOTTOM,
@@ -279,15 +283,15 @@ class _AddTaskPageState extends State<AddTaskPage> {
     try {
       int value = await _taskController.addTask(
           task: Task(
-              title: (_titleController.text).toString(),
-              note: (_noteController.text).toString(),
-              isCompleted: 0,
-              date: DateFormat.yMd().format(_selectedDate),
-              startTime: _startTime,
-              endTime: _endTime,
-              color: _selectedColor,
-              remind: _selectedRemind,
-              repeat: _selectedRepeat,
+            title: (_titleController.text).toString(),
+            note: (_noteController.text).toString(),
+            isCompleted: 0,
+            date: DateFormat.yMd().format(_selectedDate),
+            startTime: _startTime,
+            endTime: _endTime,
+            color: _selectedColor,
+            remind: _selectedRemind,
+            repeat: _selectedRepeat,
           ));
       print(value);
     } catch (e) {
@@ -308,33 +312,33 @@ class _AddTaskPageState extends State<AddTaskPage> {
         ),
         Wrap(
             children: List.generate(
-          3,
-          (index) => GestureDetector(
-            onTap: () {
-              setState(() {
-                _selectedColor = index;
-              });
-            },
-            child: Padding(
-              padding: const EdgeInsets.only(right: 10.0),
-              child: CircleAvatar(
-                backgroundColor: index == 0
-                    ? primaryClr
-                    : index == 1
+              3,
+                  (index) => GestureDetector(
+                onTap: () {
+                  setState(() {
+                    _selectedColor = index;
+                  });
+                },
+                child: Padding(
+                  padding: const EdgeInsets.only(right: 10.0),
+                  child: CircleAvatar(
+                    backgroundColor: index == 0
+                        ? primaryClr
+                        : index == 1
                         ? pinkClr
                         : orangeClr,
-                radius: 16,
-                child: _selectedColor == index
-                    ? const Icon(
-                        Icons.done_outline,
-                        size: 16,
-                        color: Colors.black,
-                      )
-                    : null,
+                    radius: 16,
+                    child: _selectedColor == index
+                        ? const Icon(
+                      Icons.done_outline,
+                      size: 16,
+                      color: Colors.black,
+                    )
+                        : null,
+                  ),
+                ),
               ),
-            ),
-          ),
-        ))
+            ))
       ],
     );
   }
@@ -362,7 +366,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
       initialTime: isStartTime
           ? TimeOfDay.fromDateTime(DateTime.now())
           : TimeOfDay.fromDateTime(
-              DateTime.now().add(const Duration(minutes: 15))),
+          DateTime.now().add(const Duration(minutes: 15))),
     );
 
     String formattedTime = pickedTime!.format(context);

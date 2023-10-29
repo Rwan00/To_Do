@@ -12,14 +12,16 @@ class TaskTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
     return Container(
       padding: EdgeInsets.all(
-         getProportionateScreenWidth(
+        getProportionateScreenWidth(
             SizeConfig.orientation == Orientation.landscape ? 4 : 5),
       ),
       width: SizeConfig.orientation == Orientation.landscape
           ? SizeConfig.screenWidth / 2
-          : 350
+          : width*0.85
       ,
       margin: EdgeInsets.only(bottom: getProportionateScreenWidth(10)),
       child: Container(
@@ -44,8 +46,8 @@ class TaskTile extends StatelessWidget {
                             fontWeight: FontWeight.bold),
                       ),
                     ),
-                    const SizedBox(
-                      height: 12,
+                    SizedBox(
+                      height: height*0.012,
                     ),
                     Text(
                       task.note!,
@@ -57,8 +59,8 @@ class TaskTile extends StatelessWidget {
                       ),
                       textAlign: TextAlign.center,
                     ),
-                    const SizedBox(
-                      height: 12,
+                    SizedBox(
+                      height: height*0.012,
                     ),
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -80,8 +82,8 @@ class TaskTile extends StatelessWidget {
                             ),
                           ),
                         ),
-                        const SizedBox(
-                          width: 30,
+                        SizedBox(
+                          width: width*0.08,
                         ),
                         Text(
                           "Repeat : ${task.repeat!}",
@@ -100,7 +102,7 @@ class TaskTile extends StatelessWidget {
             ),
             Container(
               margin: const EdgeInsets.symmetric(horizontal: 10),
-              height: 60,
+              height: height*0.08,
               width: 0.5,
               color: Colors.grey[200]!.withOpacity(0.7),
             ),

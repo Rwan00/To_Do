@@ -12,13 +12,15 @@ class InputField extends StatelessWidget {
 
   const InputField(
       {required this.title,
-      required this.hint,
-      this.controller,
-      this.widget,
-      super.key});
+        required this.hint,
+        this.controller,
+        this.widget,
+        super.key});
 
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
     SizeConfig().init(context);
     return Container(
         margin:  const EdgeInsets.only(top: 10),
@@ -32,7 +34,7 @@ class InputField extends StatelessWidget {
             Container(
               margin: const EdgeInsets.only(top: 6),
               width: SizeConfig.screenWidth,
-              height: title == "Note"? 100 : 52,
+              height: title == "Note"? height*0.12 : height*0.07,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12),
                   border: Border.all(color: Colors.blueGrey)),
@@ -40,33 +42,33 @@ class InputField extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 8.0),
-                        child: TextFormField(
-                          maxLines: title == "Note"? 5:1,
-                          controller: controller,
-                          autofocus: false,
-                          readOnly: widget != null ? true : false,
-                          style: subTitleStyle,
-                          cursorColor: Get.isDarkMode? Colors.blueGrey : primaryClr,
-                          decoration:InputDecoration(
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 8.0),
+                      child: TextFormField(
+                        maxLines: title == "Note"? 5:1,
+                        controller: controller,
+                        autofocus: false,
+                        readOnly: widget != null ? true : false,
+                        style: subTitleStyle,
+                        cursorColor: Get.isDarkMode? Colors.blueGrey : primaryClr,
+                        decoration:InputDecoration(
                             hintText: hint,
                             hintStyle: subTitleStyle.copyWith(color: Colors.grey),
                             enabledBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(
-                                color: context.theme.colorScheme.background,
-                                width: 0
-                              )
+                                borderSide: BorderSide(
+                                    color: context.theme.colorScheme.background,
+                                    width: 0
+                                )
                             ),
                             focusedBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(
-                                  color: context.theme.colorScheme.background,
-                                width: 0
-                              )
+                                borderSide: BorderSide(
+                                    color: context.theme.colorScheme.background,
+                                    width: 0
+                                )
                             )
-                          ) ,
-                        ),
+                        ) ,
                       ),
+                    ),
                   ),
                   widget ?? Container()
                 ],

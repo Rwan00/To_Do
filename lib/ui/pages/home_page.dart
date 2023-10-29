@@ -45,6 +45,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
     SizeConfig().init(context);
     return Scaffold(
       backgroundColor: context.theme.colorScheme.background,
@@ -54,24 +56,24 @@ class _MyHomePageState extends State<MyHomePage> {
         children: <Widget>[
           _addTaskBar(),
           _addDateBar(),
-          const SizedBox(
-            height: 15,
+          SizedBox(
+            height: height * 0.01,
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10.0),
             child: SizedBox(
-              width: 130,
-              height: 50,
-
+              width: width*0.33,
+              height: height*0.06,
               child: ElevatedButton(
-                style: ButtonStyle(shape: 
-                MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(30))),
-                  backgroundColor: MaterialStateProperty.all(Colors.redAccent[200])
-                ),
+                  style: ButtonStyle(
+                      shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30))),
+                      backgroundColor:
+                      MaterialStateProperty.all(Colors.redAccent[200])),
                   onPressed: () {
                     buildDialog(context);
                   },
-                  child:  Row(
+                  child: Row(
                     children: <Widget>[
                       const Icon(
                         Icons.delete_forever_outlined,
@@ -79,15 +81,19 @@ class _MyHomePageState extends State<MyHomePage> {
                         size: 24,
                       ),
                       const SizedBox(
-                        width: 8,
+                        width: 4,
                       ),
-                      Text("Delete All",style: GoogleFonts.lato(color: Colors.white,fontWeight: FontWeight.bold),),
+                      Text(
+                        "Delete All",
+                        style: GoogleFonts.lato(
+                            color: Colors.white, fontWeight: FontWeight.bold),
+                      ),
                     ],
                   )),
             ),
           ),
-          const SizedBox(
-            height: 15,
+          SizedBox(
+            height: height*0.02,
           ),
           _showTasks(),
         ],
@@ -96,14 +102,19 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void buildDialog(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
     final AlertDialog alert = AlertDialog(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
       contentTextStyle: subTitleStyle,
-      title:  Text("Delete All tasks",style: headingStyle,),
+      title: Text(
+        "Delete All tasks",
+        style: headingStyle,
+      ),
       content: SizedBox(
-        height: 130,
+        height: height * 0.17,
         child: Column(
-          children:  <Widget>[
+          children: <Widget>[
             const Divider(
               color: Colors.grey,
             ),
@@ -113,38 +124,48 @@ class _MyHomePageState extends State<MyHomePage> {
               children: [
                 Expanded(
                   child: ElevatedButton(
-                      style:  ButtonStyle(
-                        backgroundColor: const MaterialStatePropertyAll(Colors.red),
-                        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                      style: ButtonStyle(
+                        backgroundColor:
+                        const MaterialStatePropertyAll(Colors.red),
+                        shape:
+                        MaterialStateProperty.all<RoundedRectangleBorder>(
                           RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10),
                           ),
                         ),
                       ),
-                      onPressed: (){
+                      onPressed: () {
                         _taskController.deleteAllTasks();
                         notifyHelper.cancelAllNotification();
                         Navigator.of(context).pop();
                       },
-                      child:  Text("Delete",style: GoogleFonts.lato(color: Colors.white),)
-                  ),
+                      child: Text(
+                        "Delete",
+                        style: GoogleFonts.lato(color: Colors.white),
+                      )),
                 ),
-                const SizedBox(width: 15,),
+                SizedBox(
+                  width: width*0.035,
+                ),
                 Expanded(
                   child: ElevatedButton(
-                      style:  ButtonStyle(
-                        backgroundColor:  MaterialStatePropertyAll(Colors.indigo[300]),
-                        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                      style: ButtonStyle(
+                        backgroundColor:
+                        MaterialStatePropertyAll(Colors.indigo[300]),
+                        shape:
+                        MaterialStateProperty.all<RoundedRectangleBorder>(
                           RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10),
                           ),
                         ),
                       ),
-                      onPressed: (){
+                      onPressed: () {
                         Navigator.of(context).pop();
                       },
-                      child:  Text("Cancel",style: GoogleFonts.lato(color: Colors.white),)
-                  ),
+                      child: Text(
+                        "Cancel",
+                        style: GoogleFonts.lato(color: Colors.white),
+                      )),
                 ),
               ],
             ),
@@ -153,12 +174,12 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     );
     showDialog(
-        context: context,
-        builder: (BuildContext ctx){
-          return alert;
-        },
-        barrierDismissible: false,
-        //barrierColor: Colors.orange.withOpacity(0.3)
+      context: context,
+      builder: (BuildContext ctx) {
+        return alert;
+      },
+      barrierDismissible: false,
+      //barrierColor: Colors.orange.withOpacity(0.3)
     );
   }
 
@@ -191,6 +212,8 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   AppBar appBar(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
     return AppBar(
       centerTitle: true,
       backgroundColor: context.theme.colorScheme.background,
@@ -218,8 +241,8 @@ class _MyHomePageState extends State<MyHomePage> {
             backgroundColor: primaryClr,
           ),
         ),
-        const SizedBox(
-          width: 20,
+        SizedBox(
+          width: width*0.04,
         )
       ],
     );
@@ -255,14 +278,16 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   _addDateBar() {
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
     return Container(
       margin: const EdgeInsets.only(top: 3, left: 6),
       padding: const EdgeInsets.only(top: 3, left: 6),
       child: DatePicker(
         DateTime.now(),
         initialSelectedDate: _selectedDate,
-        width: 60,
-        height: 110,
+        width: width * 0.16,
+        height: height*0.14,
         selectedTextColor: Colors.white,
         selectionColor: Get.isDarkMode ? secondaryClr : primaryClr,
         deactivatedColor: Get.isDarkMode ? Colors.white : Colors.black,
@@ -289,9 +314,11 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   _showTasks() {
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
     return Expanded(
       child: Obx(
-        () {
+            () {
           if (_taskController.taskList.isEmpty) {
             return _noTaskMsg();
           } else {
@@ -310,16 +337,16 @@ class _MyHomePageState extends State<MyHomePage> {
                       task.date == DateFormat.yMd().format(_selectedDate) ||
                       (task.repeat == "Weekly" &&
                           _selectedDate
-                                      .difference(
-                                          DateFormat.yMd().parse(task.date!))
-                                      .inDays %
-                                  7 ==
+                              .difference(
+                              DateFormat.yMd().parse(task.date!))
+                              .inDays %
+                              7 ==
                               0) ||
                       (task.repeat == "Monthly" &&
                           DateFormat.yMd().parse(task.date!).day ==
                               _selectedDate.day)) {
                     DateTime date =
-                        DateFormat('HH:mm a').parse(task.startTime!);
+                    DateFormat('HH:mm a').parse(task.startTime!);
                     var myTime = DateFormat('HH:mm', "en_US").format(date);
                     print("myTime: $myTime");
                     print(task.date);
@@ -342,27 +369,34 @@ class _MyHomePageState extends State<MyHomePage> {
                             },
                             child: Row(
                               children: [
-                                const SizedBox(width: 20,),
+                                SizedBox(
+                                  width: width * 0.06,
+                                ),
                                 Column(
                                   children: [
                                     Container(
-                                      height: 10,
-                                      width: 10,
-                                      decoration:  const BoxDecoration(
-                                        shape: BoxShape.circle,
-                                        color:  Colors.redAccent
-                                      ),
+                                      height: height*0.01,
+                                      width: width*0.03,
+                                      decoration: const BoxDecoration(
+                                          shape: BoxShape.circle,
+                                          color: Colors.redAccent),
                                     ),
-                                    const SizedBox(height: 10,),
+                                    SizedBox(
+                                      height: height*0.01,
+                                    ),
                                     Container(
                                       //margin: const EdgeInsets.symmetric(horizontal: 10),
-                                      height: 90,
-                                      width: 0.5,
-                                      color: Get.isDarkMode? Colors.grey[200]!.withOpacity(0.7) : secondaryClr,
+                                      height: height*0.11,
+                                      width: 0.9,
+                                      color: Get.isDarkMode
+                                          ? Colors.grey[200]!.withOpacity(0.7)
+                                          : secondaryClr,
                                     ),
                                   ],
                                 ),
-                                const SizedBox(width: 20,),
+                                SizedBox(
+                                  width: width*0.02,
+                                ),
                                 TaskTile(task),
                               ],
                             ),
@@ -384,6 +418,8 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   _noTaskMsg() {
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
     return Stack(
       children: <Widget>[
         AnimatedPositioned(
@@ -402,14 +438,14 @@ class _MyHomePageState extends State<MyHomePage> {
                 children: <Widget>[
                   SizeConfig.orientation == Orientation.landscape
                       ? const SizedBox(
-                          height: 6,
-                        )
-                      : const SizedBox(
-                          height: 190,
-                        ),
+                    height: 6,
+                  )
+                      :  SizedBox(
+                    height: height*0.08,
+                  ),
                   SvgPicture.asset(
                     "images/task.svg",
-                    height: 80,
+                    height: SizeConfig.orientation == Orientation.landscape? height*0.2 : height *0.1,
                     semanticsLabel: "Task",
                     colorFilter: ColorFilter.mode(
                         Get.isDarkMode
@@ -419,7 +455,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                   Padding(
                     padding:
-                        const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+                    const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
                     child: Text(
                       "You don't have any tasks yet! \n Add new tasks to make your days productive.",
                       style: subTitleStyle,
@@ -427,12 +463,12 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                   ),
                   SizeConfig.orientation == Orientation.landscape
-                      ? const SizedBox(
-                          height: 120,
-                        )
-                      : const SizedBox(
-                          height: 180,
-                        ),
+                      ?  SizedBox(
+                    height: height*0.3,
+                  )
+                      :  SizedBox(
+                    height: height * 0.4,
+                  ),
                 ],
               ),
             ),
@@ -443,43 +479,45 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   showBottomSheet(BuildContext context, Task task) {
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
     Get.bottomSheet(SingleChildScrollView(
       child: Container(
         padding: const EdgeInsets.only(top: 4),
         width: SizeConfig.screenWidth,
         height: (SizeConfig.orientation == Orientation.landscape)
             ? (task.isCompleted == 1
-                ? SizeConfig.screenHeight * 0.6
-                : SizeConfig.screenHeight * 0.8)
+            ? SizeConfig.screenHeight * 0.6
+            : SizeConfig.screenHeight * 0.8)
             : (task.isCompleted == 1
-                ? SizeConfig.screenHeight * 0.30
-                : SizeConfig.screenHeight * 0.39),
+            ? SizeConfig.screenHeight * 0.30
+            : SizeConfig.screenHeight * 0.39),
         color: Get.isDarkMode ? darkHeaderClr : Colors.white,
         child: Column(
           children: <Widget>[
             Flexible(
               child: Container(
                 height: 6,
-                width: 120,
+                width: width*0.3,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   color: Get.isDarkMode ? Colors.grey[600] : Colors.grey[300],
                 ),
               ),
             ),
-            const SizedBox(
-              height: 20,
+            SizedBox(
+              height: height*0.03,
             ),
             task.isCompleted == 1
                 ? Container()
                 : _buildBottomSheet(
-                    label: "Task Completed",
-                    onTap: () {
-                      notifyHelper.cancelNotification(task);
-                      _taskController.updateTasks(task.id!);
-                      Get.back();
-                    },
-                    clr: Get.isDarkMode ? secondaryClr : primaryClr),
+                label: "Task Completed",
+                onTap: () {
+                  notifyHelper.cancelNotification(task);
+                  _taskController.updateTasks(task.id!);
+                  Get.back();
+                },
+                clr: Get.isDarkMode ? secondaryClr : primaryClr),
             _buildBottomSheet(
                 label: "Delete Task",
                 onTap: () {
@@ -508,14 +546,16 @@ class _MyHomePageState extends State<MyHomePage> {
 
   _buildBottomSheet(
       {required String label,
-      required Function() onTap,
-      required Color clr,
-      bool isClose = false}) {
+        required Function() onTap,
+        required Color clr,
+        bool isClose = false}) {
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
     return GestureDetector(
       onTap: onTap,
       child: Container(
         margin: const EdgeInsets.symmetric(vertical: 4),
-        height: 65,
+        height: height*0.08,
         width: SizeConfig.screenWidth * 0.9,
         decoration: BoxDecoration(
           border: Border.all(width: 2, color: clr),
@@ -526,7 +566,7 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Text(
             label,
             style:
-                isClose ? titleStyle : titleStyle.copyWith(color: Colors.white),
+            isClose ? titleStyle : titleStyle.copyWith(color: Colors.white),
           ),
         ),
       ),

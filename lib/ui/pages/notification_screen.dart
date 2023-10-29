@@ -24,12 +24,14 @@ class _NotificationScreenState extends State<NotificationScreen> {
 
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: context.theme.colorScheme.background,
       appBar: AppBar(
         title: Text(
-          (_payload.split("|")[0]).toUpperCase(),
-          style: headingStyle.copyWith(fontStyle: FontStyle.italic)
+            (_payload.split("|")[0]).toUpperCase(),
+            style: headingStyle.copyWith(fontStyle: FontStyle.italic)
         ),
         centerTitle: true,
         backgroundColor: context.theme.colorScheme.background.withOpacity(0.7),
@@ -45,21 +47,21 @@ class _NotificationScreenState extends State<NotificationScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const SizedBox(
-              height: 40,
+            SizedBox(
+              height: height * 0.045,
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 30.0),
               child: Column(
-               // mainAxisAlignment: MainAxisAlignment.start,
+                // mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Text(
                     "Hello, Welcome Back",
                     style: subHeadingStyle,
                   ),
-                  const SizedBox(
-                    height: 10,
+                  SizedBox(
+                    height: height*0.01,
                   ),
                   Text(
                     "You Have a New Reminder",
@@ -68,32 +70,32 @@ class _NotificationScreenState extends State<NotificationScreen> {
                 ],
               ),
             ),
-            const SizedBox(
-              height: 20,
+            SizedBox(
+              height: height*0.02,
             ),
             Container(
-              height: 350,
+              height: height*0.35,
               padding: const EdgeInsets.symmetric(horizontal: 30,vertical: 20),
               margin: const EdgeInsets.symmetric(horizontal: 30),
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(30),
-                  color:_getBGClr(int.parse(_payload.split("|")[3])),
+                borderRadius: BorderRadius.circular(30),
+                color:_getBGClr(int.parse(_payload.split("|")[3])),
               ),
               child: SingleChildScrollView(
                 child: Column(
                   //crossAxisAlignment: CrossAxisAlignment.start,
-                 // mainAxisAlignment: MainAxisAlignment.center,
+                  // mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                     Row(
-                       mainAxisAlignment: MainAxisAlignment.start,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
                       children: <Widget>[
-                         Icon(
+                        Icon(
                           Icons.title,
                           size: 30,
                           color:Get.isDarkMode? secondaryClr :Colors.white,
                         ),
-                        const SizedBox(
-                          width: 10,
+                        SizedBox(
+                          width: width*0.03,
                         ),
                         Text(
                           "Title",
@@ -102,26 +104,26 @@ class _NotificationScreenState extends State<NotificationScreen> {
                         ),
                       ],
                     ),
-                    const SizedBox(
-                      height: 10,
+                    SizedBox(
+                      height: height*0.02,
                     ),
                     Text(
-                      _payload.split("|")[0],
-                      style: subTitleStyle
+                        _payload.split("|")[0],
+                        style: subTitleStyle
                     ),
-                    const SizedBox(
-                      height: 30,
+                    SizedBox(
+                      height: height*0.035,
                     ),
-                     Row(
-                       mainAxisAlignment: MainAxisAlignment.start,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
                       children: <Widget>[
-                         Icon(
+                        Icon(
                           Icons.article,
                           size: 30,
                           color:Get.isDarkMode? secondaryClr :Colors.white,
                         ),
-                        const SizedBox(
-                          width: 15,
+                        SizedBox(
+                          width: width*0.03,
                         ),
                         Text(
                           "Description",
@@ -130,36 +132,36 @@ class _NotificationScreenState extends State<NotificationScreen> {
                         ),
                       ],
                     ),
-                    const SizedBox(
-                      height: 10,
+                    SizedBox(
+                      height: height*0.01,
                     ),
                     Text(
                       _payload.split("|")[1],
                       style: subTitleStyle,
                       textAlign: TextAlign.justify,
                     ),
-                    const SizedBox(
-                      height: 30,
+                    SizedBox(
+                      height: height*0.04,
                     ),
-                     Row(
+                    Row(
                       children: <Widget>[
-                         Icon(
+                        Icon(
                           Icons.calendar_month_outlined,
                           size: 30,
                           color: Get.isDarkMode? secondaryClr :Colors.white,
                         ),
-                        const SizedBox(
-                          width: 15,
+                        SizedBox(
+                          width: width*0.03,
                         ),
                         Text(
                           "Date",
                           style:
-                              headingStyle.copyWith(color: Get.isDarkMode? secondaryClr :Colors.white),
+                          headingStyle.copyWith(color: Get.isDarkMode? secondaryClr :Colors.white),
                         ),
                       ],
                     ),
-                    const SizedBox(
-                      height: 10,
+                    SizedBox(
+                      height: height*0.01,
                     ),
                     Text(
                       _payload.split("|")[2],
@@ -169,8 +171,8 @@ class _NotificationScreenState extends State<NotificationScreen> {
                 ),
               ),
             ),
-            const SizedBox(
-              height: 10,
+            SizedBox(
+              height: height*0.01,
             ),
           ],
         ),
