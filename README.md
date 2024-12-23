@@ -12,18 +12,30 @@ The To-Do App is a simple and intuitive task management application designed to 
 
 ## Screenshots
 
-![t8](https://github.com/user-attachments/assets/581318aa-67ba-4826-91e1-33fa1626d209)
-![t7](https://github.com/user-attachments/assets/728f13ae-e7bc-49c0-994a-cce9e70675c0)
-![t6](https://github.com/user-attachments/assets/376b8efa-912e-4bde-834b-68ea860ebc6b)
-![t5](https://github.com/user-attachments/assets/3015fba5-47e4-4dd2-84a0-166d8bca7d86)
-![t4](https://github.com/user-attachments/assets/d0747f43-5a0a-4047-a269-12407a8c2bfc)
-![t3](https://github.com/user-attachments/assets/e3f1063c-2a72-46c7-9f1e-a418bb8658a0)
-![t2](https://github.com/user-attachments/assets/8c006e6c-b224-4088-a101-e9b759d937d4)
-![t1](https://github.com/user-attachments/assets/8acfb091-2b89-4dbf-87c2-d0a6d467ab10)
-![t12](https://github.com/user-attachments/assets/ca2a1a9b-d7a3-42d8-b0cb-636dab1abefc)
-![t11](https://github.com/user-attachments/assets/c002c7e3-826b-4c18-b815-a39632bf89f4)
-![t10](https://github.com/user-attachments/assets/10aec361-b033-42f8-b3dd-843556b207cd)
-![t9](https://github.com/user-attachments/assets/8c9c8015-f4c5-4821-b75b-2396fef3c2bc)
+<div>
+   <img src = "https://github.com/user-attachments/assets/8acfb091-2b89-4dbf-87c2-d0a6d467ab10" width = "300">
+   <img src = "https://github.com/user-attachments/assets/8c006e6c-b224-4088-a101-e9b759d937d4" width = "300">
+   <img src = "https://github.com/user-attachments/assets/e3f1063c-2a72-46c7-9f1e-a418bb8658a0" width = "300">
+</div>
+
+<div>
+   <img src = "https://github.com/user-attachments/assets/d0747f43-5a0a-4047-a269-12407a8c2bfc" width = "300">
+   <img src = "https://github.com/user-attachments/assets/3015fba5-47e4-4dd2-84a0-166d8bca7d86" width = "300">
+   <img src = "https://github.com/user-attachments/assets/376b8efa-912e-4bde-834b-68ea860ebc6b" width = "300">
+</div>
+
+<div>
+   <img src = "https://github.com/user-attachments/assets/728f13ae-e7bc-49c0-994a-cce9e70675c0" width = "300">
+   <img src = "https://github.com/user-attachments/assets/581318aa-67ba-4826-91e1-33fa1626d209" width = "300">
+   <img src = "https://github.com/user-attachments/assets/8c9c8015-f4c5-4821-b75b-2396fef3c2bc" width = "300">
+</div>
+
+<div>
+   <img src = "https://github.com/user-attachments/assets/10aec361-b033-42f8-b3dd-843556b207cd" width = "300">
+   <img src = "https://github.com/user-attachments/assets/c002c7e3-826b-4c18-b815-a39632bf89f4" width = "300">
+   <img src = "https://github.com/user-attachments/assets/ca2a1a9b-d7a3-42d8-b0cb-636dab1abefc" width = "300">
+</div>
+
 
 ## Installation
 
